@@ -9,7 +9,7 @@ import { env } from '../envalid';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: env.DB_HOST,
       port: 5432,
       username: env.DB_USERNAME,
       password: env.DB_PASSWORD,

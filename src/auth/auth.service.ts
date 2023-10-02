@@ -11,7 +11,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(payload: any): Promise<User> {
+  async validateUser(payload: User): Promise<User> {
     const { username } = payload;
 
     const user = await this.userRepository.findOne({ where: { username } });
@@ -23,8 +23,8 @@ export class AuthService {
     return user;
   }
 
-  async generateToken(user: any): Promise<string> {
-    const payload = { username: user.username, sub: user.userId };
+  async generateToken(user: User): Promise<string> {
+    const payload = { username: user.username, sub: user.id };
     return this.jwtService.sign(payload);
   }
 

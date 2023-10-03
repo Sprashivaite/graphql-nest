@@ -23,6 +23,7 @@ export class TaskService {
     id: number,
     title: string,
     description: string,
+    isCompleted: boolean,
   ): Promise<Task> {
     const task = await this.getTaskById(id);
     if (!task) {
@@ -31,6 +32,7 @@ export class TaskService {
 
     task.title = title;
     task.description = description;
+    task.isCompleted = isCompleted;
     return this.taskRepository.save(task);
   }
 

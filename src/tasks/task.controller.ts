@@ -6,7 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
 } from '@nestjs/common';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from 'apollo-boost';
 import { CreateTaskInput, UpdateTaskInput } from './task.input';

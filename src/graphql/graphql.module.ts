@@ -9,6 +9,7 @@ import { GraphQLModule } from '@nestjs/graphql';
       autoSchemaFile: 'schema.gql',
       context: ({ req, res }) => ({ req, res }),
       installSubscriptionHandlers: true,
+      sortSchema: true,
     }),
   ],
 })

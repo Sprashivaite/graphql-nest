@@ -2,32 +2,32 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TaskType {
-  id: Float!
-  title: String!
+input CreateTaskInput {
   description: String!
-  isCompleted: Boolean!
-}
-
-type Query {
-  tasks: [TaskType!]!
-  task(id: Float!): TaskType!
+  title: String!
 }
 
 type Mutation {
   createTask(input: CreateTaskInput!): TaskType!
-  updateTask(input: UpdateTaskInput!): TaskType!
   deleteTask(id: Float!): String!
+  updateTask(input: UpdateTaskInput!): TaskType!
 }
 
-input CreateTaskInput {
-  title: String!
+type Query {
+  task(id: Float!): TaskType!
+  tasks: [TaskType!]!
+}
+
+type TaskType {
   description: String!
+  id: Float!
+  isCompleted: Boolean!
+  title: String!
 }
 
 input UpdateTaskInput {
-  id: Int!
-  title: String
   description: String
+  id: Int!
   isCompleted: Boolean
+  title: String
 }

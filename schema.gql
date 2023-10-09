@@ -8,17 +8,17 @@ input CreateTaskInput {
 }
 
 type Mutation {
-  createTask(input: CreateTaskInput!): TaskType!
+  createTask(input: CreateTaskInput!): Task!
   deleteTask(id: Float!): String!
-  updateTask(input: UpdateTaskInput!): TaskType!
+  updateTask(input: UpdateTaskInput!): Task!
 }
 
 type Query {
-  task(id: Float!): TaskType!
-  tasks: [TaskType!]!
+  task(id: Float!): Task!
+  tasks: [Task!]!
 }
 
-type TaskType {
+type Task {
   description: String!
   id: Float!
   isCompleted: Boolean!

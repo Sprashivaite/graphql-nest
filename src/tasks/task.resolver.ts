@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { Task } from './task.entity';
 import { CreateTaskInput, UpdateTaskInput } from './task.input';
-import { TaskType } from './task.type';
+import { Task } from './task.entity';
 import { TaskRepository } from './task.repository';
 import { DeleteResult } from 'typeorm';
 import { UseGuards } from '@nestjs/common';
@@ -12,17 +11,17 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class TaskResolver {
   constructor(private readonly taskRepository: TaskRepository) {}
 
-  @Query(() => [TaskType])
+  @Query(() => [Task])
   async tasks(): Promise<Task[]> {
     return this.taskRepository.find();
   }
 
-  @Query(() => TaskType)
+  @Query(() => Task)
   async task(@Args('id') id: number): Promise<Task> {
     return this.taskRepository.findTaskById(id);
   }
 
-  @Mutation(() => TaskType)
+  @Mutation(() => Task)
   async createTask(
     @Args('input') { title, description }: CreateTaskInput,
   ): Promise<Task> {
@@ -31,7 +30,7 @@ export class TaskResolver {
     return this.taskRepository.save(task);
   }
 
-  @Mutation(() => TaskType)
+  @Mutation(() => Task)
   async updateTask(
     @Args('input') { id, title, description, isCompleted }: UpdateTaskInput,
   ): Promise<Task> {

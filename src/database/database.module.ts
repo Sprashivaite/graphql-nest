@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TaskController } from 'src/tasks/task.controller';
 import { Task } from 'src/tasks/task.entity';
 import { TaskRepository } from 'src/tasks/task.repository';
 import { env } from '../envalid';
@@ -17,7 +16,7 @@ import { env } from '../envalid';
       synchronize: true,
       autoLoadEntities: true,
     }),
-    TypeOrmModule.forFeature([Task, TaskRepository, TaskController]),
+    TypeOrmModule.forFeature([Task, TaskRepository]),
   ],
   exports: [TypeOrmModule],
 })

@@ -18,5 +18,6 @@ import { env } from '../envalid';
   ],
   controllers: [AuthController],
   providers: [AuthService, UserRepository, JwtStrategy],
+  exports: [AuthService],
 })
 export class AuthModule {}

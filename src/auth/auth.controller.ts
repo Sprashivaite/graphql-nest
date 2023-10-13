@@ -7,18 +7,18 @@ import { SignInDto } from './dto/signin.dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('/signup')
-  async signUp(
+  @Post('/register')
+  async register(
     @Body(ValidationPipe) createUserDto: CreateUserDto,
   ): Promise<void> {
-    await this.authService.signUp(
+    await this.authService.register(
       createUserDto.username,
       createUserDto.password,
     );
   }
 
-  @Post('/signin')
-  async signIn(
+  @Post('/login')
+  async login(
     @Body(ValidationPipe) signInDto: SignInDto,
   ): Promise<{ accessToken: string }> {
     const { username, password } = signInDto;

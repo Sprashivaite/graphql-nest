@@ -23,12 +23,12 @@ export class AuthService {
     return user;
   }
 
-  async generateToken(user: User): Promise<string> {
+  async login(user: User): Promise<string> {
     const payload = { username: user.username, sub: user.id };
     return this.jwtService.sign(payload);
   }
 
-  async signUp(username: string, password: string): Promise<void> {
+  async register(username: string, password: string): Promise<void> {
     const userExists = await this.userRepository.findOne({
       where: { username },
     });

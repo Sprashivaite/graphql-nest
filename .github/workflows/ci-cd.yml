@@ -23,3 +23,28 @@ jobs:
 
       - name: Run Tests
         run: npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build and Deploy to GitHub Pages
+        run: |
+          npm install
+          npm run build
+          git config user.email "sanitar.kem@mail.ru"
+          git config user.name "sprashivaite"
+          git checkout --orphan gh-pages
+          git --set-upstream-to=origin/task-9
+          git pull
+          rm -rf *
+          mv dist/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push -f origin gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

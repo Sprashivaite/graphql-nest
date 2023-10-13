@@ -19,7 +19,6 @@ describe('AuthService', () => {
       ],
     }).compile();
 
-    authService = module.get<AuthService>(AuthService);
     jwtService = module.get<JwtService>(JwtService);
   });
 

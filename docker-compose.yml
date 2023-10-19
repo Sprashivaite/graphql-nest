@@ -6,20 +6,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
-    environment:
-      - NODE_ENV=production
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=warety
-      - DB_DATABASE=otus
-    depends_on:
-      - db
     volumes:
       - .:/app
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: otus
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: warety

@@ -1,0 +1,4 @@
+services:
+  - name: otus
+    buildCommand: docker build -t otus .
+    startCommand: docker run -e PORT=8080 -p 8080:8080 otus

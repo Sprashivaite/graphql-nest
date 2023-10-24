@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcryptjs from 'bcryptjs';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from './user.repository';
@@ -46,7 +46,7 @@ export class AuthService {
 
   private async hashPassword(password: string): Promise<string> {
     const saltRounds = 6;
-    return bcrypt.hash(password, saltRounds);
+    return bcryptjs.hash(password, saltRounds);
   }
 
   async signIn(
@@ -78,6 +78,6 @@ export class AuthService {
     password: string,
     hashedPassword: string,
   ): Promise<boolean> {
-    return bcrypt.compare(password, hashedPassword);
+    return bcryptjs.compare(password, hashedPassword);
   }
 }

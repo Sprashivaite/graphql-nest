@@ -4,7 +4,7 @@ import { Task } from './task.entity';
 import { TaskRepository } from './task.repository';
 import { DeleteResult } from 'typeorm';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Resolver()
 @UseGuards(JwtAuthGuard)
